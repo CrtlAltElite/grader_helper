@@ -1,18 +1,23 @@
 import os
 import shutil
+import subprocess
+
+
+current_file_path = os.path.abspath(__file__)
+current_folder_path = os.path.dirname(current_file_path)
 
 students ={
-    # # "Jurgita":"",
-    # "sheridan":"https://github.com/BigBird29575/shopping_cart",
-    # "jeremy":"https://github.com/jermateo/shopping_cart",
-    # # "desiree":"",
-    # "mani":"https://github.com/MemoriesWholesale/PirateShop.git",
-    # "mason":"https://github.com/masonsinner/shopping_cart_python",
-    # "leisa":"https://github.com/leisatrisler/wk2-python-basics-project",
-    # "Val":"https://github.com/ValenciaW9/PythonShoppingCart.git",
-    # # "keanu":"",
-    # # "austin":"",
-    # "Cyn":"https://github.com/Melikrome1/shoppingcart/blob/main/Untitled.ipynb" 
+    "Jurgita1":"https://github.com/CrtlAltElite/CAE100-BIG-Project",
+    # "sheridan":"",
+    # "jeremy":"",
+    # "desiree":"",
+    # "mani":"",
+    # "mason":"",
+    # "leisa":"",
+    # "Val":"",
+    # "keanu":"",
+    # "Cyn":"",
+    # "Danny":""
 }
 
 
@@ -26,7 +31,12 @@ for name, url in students.items():
         if os.path.isdir("./migrations"):
             print("here")
             shutil.rmtree('migrations')
-        os.system(f". ../flask-load.sh")
+        if os.name == "nt":
+            subprocess.call(f"{current_folder_path}/flask-load.bat", shell=True)
+            
+        else:
+            subprocess.call(f". {current_folder_path}/flask-load.sh", shell=True)
+            dummy =0 
         os.chdir(f"..")
     if os.path.isfile(f"./{name}/package.json"):
         os.chdir(f"{name}")
