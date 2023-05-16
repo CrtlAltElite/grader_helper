@@ -7,7 +7,7 @@ current_file_path = os.path.abspath(__file__)
 current_folder_path = os.path.dirname(current_file_path)
 
 students ={
-    "Jurgita1":"https://github.com/CrtlAltElite/CAE100-BIG-Project",
+    # "Jurgita":"",
     # "sheridan":"",
     # "jeremy":"",
     # "desiree":"",
@@ -32,11 +32,9 @@ for name, url in students.items():
             print("here")
             shutil.rmtree('migrations')
         if os.name == "nt":
-            subprocess.call(f"{current_folder_path}/flask-load.bat", shell=True)
-            
-        else:
+            subprocess.call(f"start {current_folder_path}\\flask-load.bat", shell=True)            
+        if os.name != "nt":
             subprocess.call(f". {current_folder_path}/flask-load.sh", shell=True)
-            dummy =0 
         os.chdir(f"..")
     if os.path.isfile(f"./{name}/package.json"):
         os.chdir(f"{name}")
